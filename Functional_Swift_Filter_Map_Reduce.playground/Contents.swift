@@ -124,6 +124,97 @@ class Stack<T>{
 
 */
 
+// MARK: Map
+// return an array
+
+func incredmentArray(xs: [Int]) -> [Int] {
+    var result: [Int] = []
+    for x in xs {
+        result.append(x+1)
+    }
+    return result
+}
+
+func doubleArray(xs: [Int]) -> [Int] {
+    var array: [Int] = []
+    for x in xs {
+        array.append(2 * x)
+    }
+    return array
+    
+}
+
+
+
+//let aray = [1,2,3,4,5,6]
+
+//let p = doubleArray(aray)
+
+
+func computeArray(xs: [Int], transform: Int -> Int) -> [Int] {
+    var result: [Int] = []
+    
+    for x in xs {
+        result.append(transform(x))
+    }
+    return result
+}
+
+/*
+
+let pa = computeArray([1,2,3,4,5,5]) { item -> Int in
+    return 2 * ( item + 1 )
+}
+
+ */
+
+func doubleArrays(xs: [Int]) -> [Int] {
+    return computeArray(xs, transform: { item -> Int in
+        return 2 * item
+    })
+}
+
+//let p = doubleArrays([1,2,3,4,5])
+
+func genericComputeArray<T>(xs: [Int],transform: Int -> T) -> [T] {
+    var result: [T] = []
+    for x in xs {
+        result.append(transform(x))
+    }
+    return result
+}
+
+
+// generalize further
+
+func map<Element, T>(xs: [Element], transform: Element -> T) -> [T] {
+    var result: [T] = []
+    for x in xs {
+        result.append(transform(x))
+    }
+    return result
+}
+
+
+extension Array {
+    func map<T>(transform: Element -> T) -> [T] {
+        var result: [T] = []
+        for x in self {
+            result.append(transform(x))
+        }
+        return result
+    }
+}
+
+//: Filter
+// return element
+
+
+
+
+
+
+
 
 
 
