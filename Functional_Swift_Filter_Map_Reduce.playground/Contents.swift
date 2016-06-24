@@ -210,6 +210,49 @@ extension Array {
 // return element
 
 
+let example = ["README.md","Hello.swift","world.swift"]
+
+func getSwiftFiles(files: [String]) -> [String] {
+    var result: [String] = []
+    for x in files {
+        if x.hasSuffix(".swift") {
+            result.append(x)
+        }
+    }
+    return result
+}
+
+//print(getSwiftFiles(example))
+
+// Now we put it into an extension
+
+extension Array {
+    func filter(includeElement: Element -> Bool) -> [Element] {
+        var result: [Element] = []
+        for x in self where includeElement(x) {
+            result.append(x)
+        }
+        return result
+    }
+}
+
+/*
+let p = example.filter { (element) -> Bool in
+    element.hasSuffix(".swift")
+}
+ */
+
+let p = example.filter{
+    $0.hasSuffix(".swift")
+}
+// This way can simplify the code
+
+
+//print(p)
+
+
+
+
 
 
 
